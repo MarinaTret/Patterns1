@@ -56,6 +56,7 @@ class DeliveryTest {
                 .shouldHave(exactText("Встреча успешно запланирована на " + secondMeetingDate))
                 .shouldBe(Condition.visible);
     }
+
     //нет даты
     @Test
     @DisplayName("Should Stop Empty Data")
@@ -76,6 +77,7 @@ class DeliveryTest {
                 .shouldHave(exactText("Неверно введена дата"))
                 .shouldBe(Condition.visible);
     }
+
     //невалидное имя
     @Test
     @DisplayName("Should Stop invalid Name")
@@ -139,27 +141,6 @@ class DeliveryTest {
         $("button.button").click();
         $("[data-test-id='name'] .input__inner .input__sub")
                 .shouldHave(exactText("Поле обязательно для заполнения"))
-                .shouldBe(Condition.visible);
-    }
-    //невалидный телефон
-    //@Test
-    @DisplayName("Should Stop Invalid Phone")
-    void InvalidPhone() {
-        //DataGenerator.generateCity();
-        var validUser = DataGenerator.Registration.generateUser("ru");
-        var daysToAddForFirstMeeting = 4;
-        var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
-        var daysToAddForSecondMeeting = 7;
-        var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        $("[data-test-id='city'] input").setValue(validUser.getCity());
-        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
-        $("[data-test-id='name'] input").setValue(validUser.getName());
-        $("[data-test-id='date'] input").setValue(firstMeetingDate);
-        $("[data-test-id='phone'] input").setValue("+79220345");
-        $("[data-test-id='agreement']").click();
-        $("button.button").click();
-        $("[data-test-id='phone'] .input__inner .input__sub")
-                .shouldHave(exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."))
                 .shouldBe(Condition.visible);
     }
 
