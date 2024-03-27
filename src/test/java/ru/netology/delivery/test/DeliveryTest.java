@@ -178,7 +178,6 @@ class DeliveryTest {
         $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
         $("[data-test-id='name'] input").setValue(validUser.getName());
         $("[data-test-id='date'] input").setValue(firstMeetingDate);
-        $("[data-test-id='agreement']").click();
         $("button.button").click();
         $("[data-test-id='agreement'] .checkbox__text")
                 .shouldHave(exactText("Я соглашаюсь с условиями обработки и использования моих персональных данных"))
