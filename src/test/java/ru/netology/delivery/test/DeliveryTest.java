@@ -39,15 +39,15 @@ class DeliveryTest {
         $("[data-test-id='success-notification'] .notification__title")
                 .shouldHave(exactText("Успешно!"))
                 .shouldBe(Condition.visible);
-        //$("[data-test-id='success-notification'] .notification__content")
-        //         .shouldHave(exactText("Встреча успешно забронирована на " + firstMeetingDate))
-        //         .shouldBe(Condition.visible, Duration.ofSeconds(15));
+        $("[data-test-id='success-notification'] .notification__content")
+                 .shouldHave(exactText("Встреча успешно запланирована на " + firstMeetingDate))
+                 .shouldBe(Condition.visible, Duration.ofSeconds(15));
         $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
         $("[data-test-id='date'] input").setValue(secondMeetingDate);
         $("button.button").click();
-        //$("[data-test-id='replan-notification']. notification__title")
-        //        .shouldHave(exactText("Необходимо подтверждение"))
-        //        .shouldBe(Condition.visible);
+        $("[data-test-id='replan-notification'] .notification__title")
+                .shouldHave(exactText("Необходимо подтверждение"))
+                .shouldBe(Condition.visible);
         $("[data-test-id='replan-notification'] .notification__content")
                 .shouldBe(exactText("У вас уже запланирована встреча на другую дату. Перепланировать? Перепланировать"))
                 .shouldBe(Condition.visible);
